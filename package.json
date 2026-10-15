@@ -1,0 +1,39 @@
+{
+  "name": "phantom-exchange-ui",
+  "version": "0.1.0",
+  "description": "Trading UI for a crypto exchange: live order book, trades, candlestick chart, order form",
+  "scripts": {
+    "dev": "next dev",
+    "dev:all": "concurrently -n web,mock \"next dev\" \"node server/mock-server.mjs\"",
+    "mock": "node server/mock-server.mjs",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "geist": "^1.7.2",
+    "lightweight-charts": "^4.2.3",
+    "lucide-react": "^1.57.0",
+    "next": "^16.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "socket.io-client": "^4.8.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "concurrently": "^10.0.6",
+    "socket.io": "^4.8.4",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "private": true
+}

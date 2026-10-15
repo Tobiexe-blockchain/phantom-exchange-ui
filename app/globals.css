@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-raised: #141414;
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #fafafa;
+  --text-muted: #a1a1a1;
+  --accent: #f2a93b;
+  --accent-hover: #f5b95c;
+  --accent-pressed: #d98f20;
+  --on-accent: #000000;
+  --success: #3ecf8e;
+  --success-soft: rgba(62, 207, 142, 0.14);
+  --danger: #ff6369;
+  --danger-soft: rgba(255, 99, 105, 0.14);
+  --focus-ring: #fafafa;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-toast: 50;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--surface-raised);
+  --color-line: var(--border);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-pressed: var(--accent-pressed);
+  --color-on-accent: var(--on-accent);
+  --color-up: var(--success);
+  --color-up-soft: var(--success-soft);
+  --color-down: var(--danger);
+  --color-down-soft: var(--danger-soft);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+button,
+select,
+[role="radio"],
+[role="tab"] {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Terminal layout: one panel at a time on small screens, a grid from 1024px. */
+.terminal {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+}
+.area-chart { grid-area: chart; }
+.area-book { grid-area: book; }
+.area-form { grid-area: form; }
+.area-orders { grid-area: orders; }
+.area-trades { grid-area: trades; }
+.area-balances { grid-area: balances; }
+
+@media (min-width: 1024px) {
+  .terminal {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 288px 320px;
+    grid-template-rows: minmax(0, 1fr) 280px;
+    grid-template-areas:
+      "chart book form"
+      "orders trades balances";
+    gap: 1px;
+    background: var(--border);
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
