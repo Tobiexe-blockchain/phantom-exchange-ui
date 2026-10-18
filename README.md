@@ -19,10 +19,10 @@ A trading screen for a crypto exchange. Pick a pair, watch the order book and re
 
 ```bash
 npm install
-npm run dev:all     # web app on :3000 and the demo server on :4000
+npm run dev         # http://localhost:3000, uses the in-browser demo
 ```
 
-Or in two terminals: `npm run dev` and `npm run mock`.
+To try the server version, set `NEXT_PUBLIC_DATA_SOURCE=mock` and run `npm run dev:all`.
 
 ```bash
 npm run typecheck
@@ -36,7 +36,8 @@ Set `NEXT_PUBLIC_DATA_SOURCE` in `.env.local` (see `.env.example`).
 
 | Value | What it uses |
 |---|---|
-| `mock` (default) | The demo server in `server/mock-server.mjs`. Simulates two markets, a book, trades, history candles, and one demo account with balances. |
+| `demo` (default) | Runs entirely in the browser (`lib/feed/demo.ts`). Simulated prices, a book, trades, history candles, and one demo account. No server needed, so it can be hosted as a plain web app. State resets when the page reloads. |
+| `mock` | The Socket.io demo server in `server/mock-server.mjs`, with the same simulation on a server. |
 | `engine` | The phantom-matcher HTTP and WebSocket API. |
 
 All screens read from one `Feed` interface (`lib/feed/types.ts`), so another backend means one new adapter.

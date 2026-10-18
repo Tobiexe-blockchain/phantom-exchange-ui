@@ -162,7 +162,7 @@ function placeOrder(req) {
   if (!m) return { ok: false, error: 'Unknown trading pair.' };
   if (req.side !== 'buy' && req.side !== 'sell') return { ok: false, error: 'Choose buy or sell.' };
   if (req.type !== 'limit' && req.type !== 'market') return { ok: false, error: 'Choose limit or market.' };
-  const amount = Number(req.amount);
+  const amount = r8(Number(req.amount)); // round once so held, filled and released amounts match
   if (!Number.isFinite(amount) || amount <= 0) return { ok: false, error: 'Enter an amount greater than 0.' };
   const base = balances[m.base];
   const quote = balances[m.quote];
@@ -174,7 +174,7 @@ function placeOrder(req) {
     side: req.side,
     type: req.type,
     price: null,
-    amount: r8(amount),
+    amount,
     filled: 0,
     status: 'open',
     createdAt: Date.now(),

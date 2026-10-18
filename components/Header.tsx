@@ -83,7 +83,7 @@ export function Header({ pair, onPairChange, ticker, status }: HeaderProps) {
         <StatusIcon size={16} strokeWidth={1.8} aria-hidden />
         <span>
           {STATUS_LABEL[status]}
-          {config.source === 'mock' && status === 'live' ? ' (demo data)' : ''}
+          {config.source !== 'engine' && status === 'live' ? ' (demo data)' : ''}
         </span>
       </p>
     </header>
