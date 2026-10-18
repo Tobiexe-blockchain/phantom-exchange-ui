@@ -1,5 +1,7 @@
 # Phantom Exchange UI
 
+Live demo: https://phantom-exchange-ui.vercel.app (simulated prices, runs in your browser)
+
 A trading screen for a crypto exchange. Pick a pair, watch the order book and recent trades update live, read a candlestick chart, and place or cancel orders.
 
 > Demo project. It ships with a demo market server so it runs on its own. Prices are simulated and no real funds are involved.
@@ -63,7 +65,7 @@ components/     Header, Chart, OrderBook, TradesFeed, OrderForm, OrdersPanel, Ba
 hooks/          useMarket: one hook that owns connection state and market data
 lib/            types, formatting, candle math, order validation, feed adapters
 server/         demo market server
-tests/          candle math, order validation, engine normalizers
+tests/          40 tests: candle math, order validation, engine normalizers, and the in-browser demo exchange
 ```
 
 ## Design notes
